@@ -2,7 +2,7 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
+* [http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/](https://www.cs.helsinki.fi)
 * [https://github.com/tuukkatu/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf](https://www.github.com)
 
 ## Työn aihe
