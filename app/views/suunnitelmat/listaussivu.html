@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Käyttäjän Tuukka olutarvostelut</h1>
+
+  <p>
+    <a href="#" class="btn btn-success">Lisää arvostelu</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Olut</th>
+        <th>Arvostelupäivä</th>
+        <th>Arvosana(0-100)</th>
+        <th>Panimo</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Listataan oluet tähän -->
+      <tr>
+        <td><a href="#">Koff III</a></td>
+        <td>11.11.2011</td>
+        <td>71</td>
+        <td>Sinebrychoff</td>
+        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
