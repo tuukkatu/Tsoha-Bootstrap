@@ -2,12 +2,13 @@
 
 Yleisiä linkkejä:
 
-* [http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/](https://www.cs.helsinki.fi)
-* [https://github.com/tuukkatu/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf](https://www.github.com)
-* [tuukkatu.users.cs.helsinki.fi/tietokantasovellus/beer_list](listaussivu)
-* [tuukkatu.users.cs.helsinki.fi/tietokantasovellus/show](esittelysivu)
-* [tuukkatu.users.cs.helsinki.fi/tietokantasovellus/edit](muokkaussivu)
-* [tuukkatu.users.cs.helsinki.fi/tietokantasovellus/login](login sivu)
+* [Tietokantasovellus](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/)
+* [Dokumentaatio](https://github.com/tuukkatu/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
+* [Listaussivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/beer_list)
+* [Esittelysivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/show)
+* [Muokkaussivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/edit)
+* [Loginsivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/login)
+* [Etusivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/frontpage)
 
 ## Työn aihe
 
