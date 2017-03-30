@@ -17,13 +17,34 @@
   });
   
   $routes->get('/beer_list', function() {
-    HelloWorldController::listaussivu();
+    BeerController::index();
   });
   
   $routes->get('/login', function() {
     HelloWorldController::login();
   });
   
-  $routes->get('/frontpage', function() {
-    HelloWorldController::frontpage();
+  $routes->get('/suunnitelmat/frontpage', function() {
+    BeerController::index();
   });
+  
+  $routes->get('/suunnitelmat', function(){
+  BeerController::index();
+  });
+  
+  $routes->post('/suunnitelmat', function(){
+  BeerController::store(); 
+  });
+  
+  $routes->get('/olut/new', function(){
+  BeerController::create(); 
+  });
+  
+  $routes->get('/suunnitelmat/:id/edit', function($id){
+  BeerController::edit($id);
+  });
+  
+  $routes->get('/suunnitelmat/:id', function($id){
+  BeerController::show($id);
+  });
+  

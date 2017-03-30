@@ -5,6 +5,35 @@
   
   <!-- Kuvaus tulee tähän -->
   <p>
-    Tälle sivustolle voit listata ja arvostella kaikki testaamasi oluet. Lisäksi voit nähdä mitä ystäväsi ovat pitäneet eri oluista.
+    Tälle sivustolle on listattu kaikki tietokannassa olevat oluet.
   </p>
+  <p>
+    <a href="{{base_path}}/olut/new" class="btn btn-success">Lisää olut</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Olut</th>
+        <th>Panimo</th>
+        <th>Tyyppi</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Listataan oluet tähän -->
+      {% for olut in oluet %}
+      <tr>
+          <td><a href="{{base_path}}/suunnitelmat/{{olut.id}}">{{olut.nimi}}</td>
+        <td>{{olut.panimo}}</td>
+        <td>{{olut.tyyppi_id}}</td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/suunnitelmat/{{olut.id}}/edit">Muokkaa</a></th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
+  
+  
+

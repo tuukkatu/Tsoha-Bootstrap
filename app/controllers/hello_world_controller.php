@@ -1,5 +1,6 @@
 <?php
 
+/*
   class HelloWorldController extends BaseController{
 
     public static function index(){
@@ -9,7 +10,12 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      View::make('helloworld.html');
+      //View::make('helloworld.html');
+      $Koff = Olut::find(1);
+      $olut = Olut::all();
+      
+      Kint::dump($olut);
+      Kint::dump($Koff);
     }
     
     public static function esittely(){
@@ -32,3 +38,4 @@
       View::make('suunnitelmat/frontpage.html');  
     }
   }
+*/

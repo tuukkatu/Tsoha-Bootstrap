@@ -3,7 +3,7 @@
   <h1>Käyttäjän Tuukka olutarvostelut</h1>
 
   <p>
-    <a href="#" class="btn btn-success">Lisää arvostelu</a>
+    <a href="{{base_path}}/arvostelu/new" class="btn btn-success">Lisää arvostelu</a>
   </p>
 
   <table class="table table-striped table-bordered">
@@ -19,13 +19,15 @@
 
     <tbody>
       <!-- Listataan oluet tähän -->
+      {% for arvostelu in arvostelut %}
       <tr>
-        <td><a href="#">Koff III</a></td>
-        <td>11.11.2011</td>
-        <td>71</td>
+          <td><a href="{{base_path}}/{{arvostelu.id}}">{{arvostelu.nimi}}</td>
+        <td>{{arvostelu.arvostelupaiva}}</td>
+        <td>{{arvostelu.arvosana}}</td>
         <td>Sinebrychoff</td>
-        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/{{arvostelu.id}}/edit">Muokkaa</a></th>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

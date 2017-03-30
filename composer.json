@@ -3,7 +3,11 @@
 		"classmap": [
 			"config/database.php",
 			"lib",
-			"app/controllers"
+			"app/controllers",
+                        "app/models/arvostelija.php",
+                        "app/models/arvostelu.php",
+                        "app/models/olut.php",
+                        "app/models/tyyppi.php"
 		]
 	},
 	"require": {
