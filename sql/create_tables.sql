@@ -1,6 +1,7 @@
 CREATE TABLE Arvostelija(
 id SERIAL PRIMARY KEY,
-nimi varchar(12) NOT NULL
+username varchar(50) NOT NULL,
+password varchar(50) NOT NULL
 );
 
 CREATE TABLE Tyyppi(

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Tervetuloa olutharrastajien arvostelusivustolle</h1>
+  <h1>Tälle sivulle on listattu kaikki tietokannassa olevat oluet.</h1>
   
   
   <!-- Kuvaus tulee tähän -->
   <p>
-    Tälle sivustolle on listattu kaikki tietokannassa olevat oluet.
+    Voit lisätä tai muokata oluita tällä sivulla
   </p>
   <p>
     <a href="{{base_path}}/olut/new" class="btn btn-success">Lisää olut</a>
@@ -25,10 +25,10 @@
       <!-- Listataan oluet tähän -->
       {% for olut in oluet %}
       <tr>
-          <td><a href="{{base_path}}/suunnitelmat/{{olut.id}}">{{olut.nimi}}</td>
+          <td><a href="{{base_path}}/olut/{{olut.id}}">{{olut.nimi}}</td>
         <td>{{olut.panimo}}</td>
         <td>{{olut.tyyppi_id}}</td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/suunnitelmat/{{olut.id}}/edit">Muokkaa</a></th>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/olut/{{olut.id}}/edit">Muokkaa</a></th>
       </tr>
       {% endfor %}
     </tbody>

@@ -1,7 +1,7 @@
 <?php
 
 class Arvostelija extends BaseModel{
-    public $id, $nimi;
+    public $id, $username, $password;
     
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -19,7 +19,8 @@ class Arvostelija extends BaseModel{
         foreach($rows as $row){
             $arvostelijat[] = new Arvostelija(array(
                 'id' => $row['id'],
-                'nimi' => $row['nimi']
+                'username' => $row['username'],
+                'password' => $row['password']
                     ));
         }
         
@@ -35,12 +36,26 @@ class Arvostelija extends BaseModel{
         if($row){
             $arvostelija = new Arvostelija(array(
                 'id' => $row['id'],
-                'nimi' => $row['nimi']
+                'username' => $row['username'],
+                'password' => $row['password']
             ));
             
             return $arvostelija;
         }
         return null;
+    }
+    
+    public static function authenticate(){
+        $query = DB::connection()->prepare('SELECT * FROM Arvostelija WHERE username = :username AND password = :password LIMIT 1');
+        $query->execute(array('username' => $username, 'password' => $password));
+        $row = $query->fetch();
+        if($row){
+            //käyttäjä löytyi, palautetaan löytynyt käyttäjä oliona
+            return $arvostelija;
+        }else{
+            //käyttäjää ei löytynyt, palautetaan null
+            return null;
+        }
     }
 }
 
