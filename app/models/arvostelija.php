@@ -45,11 +45,16 @@ class Arvostelija extends BaseModel{
         return null;
     }
     
-    public static function authenticate(){
+    public static function authenticate($username, $password){
         $query = DB::connection()->prepare('SELECT * FROM Arvostelija WHERE username = :username AND password = :password LIMIT 1');
         $query->execute(array('username' => $username, 'password' => $password));
         $row = $query->fetch();
         if($row){
+            $arvostelija = new Arvostelija(array(
+                'id' => $row['id'],
+                'username' => $row['username'],
+                'password' => $row['password']
+                 ));   
             //käyttäjä löytyi, palautetaan löytynyt käyttäjä oliona
             return $arvostelija;
         }else{

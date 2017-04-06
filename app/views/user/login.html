@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Kirjaudu sisään</h1>
-
+  <p>{{message}}</p>
   <!-- Kaikki lomakkeen elementit form-tagin sisään -->
   <form method="post" action="{{base_path}}/login">
     <!-- Tekstikenttä käyttäjätunnukselle -->
