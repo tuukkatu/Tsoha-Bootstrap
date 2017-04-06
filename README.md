@@ -8,6 +8,7 @@ Yleisiä linkkejä:
 * [Esittelysivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/olut/1)
 * [Muokkaussivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/olut/1/edit)
 * [Loginsivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/login)
+Käyttäjätunnus: kissa  Salasana: kissa123
 * [Etusivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/olut/etusivu)
 
 ## Työn aihe
