@@ -13,6 +13,7 @@ CREATE TABLE Olut(
 id SERIAL PRIMARY KEY,
 nimi varchar(50) NOT NULL,
 panimo varchar(50) NOT NULL,
+kuvaus varchar(100),
 tyyppi_id INT REFERENCES Tyyppi(id)
 );
 

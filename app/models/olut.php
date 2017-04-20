@@ -1,7 +1,7 @@
 <?php
 
 class Olut extends BaseModel{
-    public $id, $nimi, $panimo;//, $tyyppi_id;
+    public $id, $nimi, $panimo, $kuvaus, $tyyppi_id;
     
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -43,8 +43,9 @@ class Olut extends BaseModel{
             $oluet[] = new Olut(array(
                 'id' => $row['id'],
                 'nimi' => $row['nimi'],
-                'panimo' => $row['panimo']
-                //'tyyppi_id' => $row['tyyppi_id']
+                'panimo' => $row['panimo'],
+                'kuvaus' => $row['kuvaus'],
+                'tyyppi_id' => $row['tyyppi_id']
                     ));
         }
         
@@ -61,8 +62,9 @@ class Olut extends BaseModel{
             $olut = new Olut(array(
                 'id' => $row['id'],
                 'nimi' => $row['nimi'],
-                'panimo' => $row['panimo']
-                //'tyyppi_id' => $row['tyyppi_id']
+                'panimo' => $row['panimo'],
+                'kuvaus' => $row['kuvaus'],
+                'tyyppi_id' => $row['tyyppi_id']
             ));
             
             return $olut;
@@ -71,20 +73,38 @@ class Olut extends BaseModel{
     }
     
     public function save(){
-        $query = DB::connection()->prepare('INSERT INTO Olut (nimi, panimo) VALUES (:nimi, :panimo) RETURNING id');
-        $query->execute(array('nimi' => $this->nimi, 'panimo' => $this->panimo));
+        $query = DB::connection()->prepare('INSERT INTO Olut (nimi, panimo, kuvaus, tyyppi_id) VALUES (:nimi, :panimo, :kuvaus, :tyyppi_id) RETURNING id');
+        $query->execute(array('nimi' => $this->nimi, 'panimo' => $this->panimo, 'kuvaus' => $this->kuvaus, 'tyyppi_id' => $this->tyyppi_id));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
     
     public function update(){
-        $query = DB::connection()->prepare('UPDATE Olut SET nimi = :nimi, panimo = :panimo WHERE id = :id');
-        $query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'panimo' => $this->panimo));
+        $query = DB::connection()->prepare('UPDATE Olut SET nimi = :nimi, panimo = :panimo, kuvaus = :kuvaus, tyyppi_id = :tyyppi_id WHERE id = :id');
+        $query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'panimo' => $this->panimo, 'kuvaus' => $this->kuvaus, 'tyyppi_id' => $this->tyyppi_id));
     }
     
     public function destroy(){
         $query = DB::connection()->prepare('DELETE FROM Olut WHERE id = :id');
         $query->execute(array('id' => $this->id));
     }
+    
+//    public static function OlutTyyppi($id){
+//        $query = DB::connection()->prepare('SELECT Tyyppi.nimi AS Tyyppi_nimi );
+//        $query->execute(array('id' => $id));
+//        $row = $query->fetch();
+//        
+//        $arvostelut = array();
+//        
+//        foreach($rows as $row){
+//            $arvostelut[] = new Arvostelu(array(
+//                'id' => $row['id'],
+//                'nimi' => $row['nimi'],
+//                'panimo' => $row['panimo'],
+//                'kuvaus' => $row['kuvaus'],
+//                'tyyppi_id' => $row['tyyppi_id']
+//                    ));
+//        }
+//    }
 }
 

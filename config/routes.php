@@ -63,11 +63,14 @@ $routes->get('/login', function(){
     UserController::login();
 });
 
-$routes->post('/login', function(){
+$routes->post('/login', function() {
     UserController::handle_login();
 });
-        
-  $routes->get('/', function() {
+
+$routes->get('/', function() {
     BeerController::index();
 });
 
+$routes->post('/logout', function(){
+    UserController::logout();
+});

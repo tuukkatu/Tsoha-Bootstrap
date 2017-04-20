@@ -20,11 +20,12 @@ class BeerController extends BaseController {
     
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'nimi' => $params['nimi'],
             'panimo' => $params['panimo'],
-            //'tyyppi_id' => $params['tyyppi_id']
+            'tyyppi_id' => $params['tyyppi']
         );
         //Kint::dump($params);
         $olut = new Olut($attributes);
@@ -46,7 +47,9 @@ class BeerController extends BaseController {
     }
     
     public static function create(){
-        View::make('olut/new.html');
+        self::check_logged_in();
+        $tyyppi = Tyyppi::all();
+        View::make('olut/new.html', array('tyypit' => $tyyppi));
     }
     
     public static function show($id){
@@ -55,11 +58,13 @@ class BeerController extends BaseController {
     }
     
     public static function edit($id){
+        self::check_logged_in();
         $olut = Olut::find($id);
         View::make('olut/edit.html', array('olut' => $olut));
     }
     
     public static function update($id){
+        self::check_logged_in();
         $params = $_POST;
         
         $attributes = array(
@@ -81,7 +86,7 @@ class BeerController extends BaseController {
     }
     
     public static function destroy($id){
-        
+        self::check_logged_in();
         $olut = new Olut(array('id' => $id));
         $olut->destroy();
         

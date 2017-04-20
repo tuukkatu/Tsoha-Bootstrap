@@ -4,10 +4,10 @@
 
     public static function get_user_logged_in(){
       // Toteuta kirjautuneen käyttäjän haku tähän
-      if(isset($_SESSION['user'])){
-          $user_id = $_SESSION['user'];
+      if(isset($_SESSION['arvostelija'])){
+          $user_id = $_SESSION['arvostelija'];
           
-          $user = User::find($user_id);
+          $user = Arvostelija::find($user_id);
           
           return $user;
       }  
@@ -17,6 +17,9 @@
     public static function check_logged_in(){
       // Toteuta kirjautumisen tarkistus tähän.
       // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
+      if(!isset($_SESSION['arvostelija'])){
+          Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!'));
+      }  
     }
 
   }
