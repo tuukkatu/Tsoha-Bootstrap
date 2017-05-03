@@ -33,13 +33,14 @@
               <span class="icon-bar"></span>
           </button>
           <!-- Sovelluksen nimi -->
-          <a class="navbar-brand" href="/tietokantasovellus/olut/frontpage">Olutarvostelu</a>
+          <a class="navbar-brand" href="/tietokantasovellus/olut/listaussivu">Omat arvostelut</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
                 <!-- Navigaation linkit -->
-                <li><a href="/tietokantasovellus/olut/olutlista">Listaussivu</a></li>
+                <li><a href="/tietokantasovellus/arvostelut">Kaikki arvostelut</a></li>
+                <li><a href="/tietokantasovellus/olut/olutlista">Kaikki oluet</a></li>
             </ul>
             {% if user_logged_in %}
             <p class="navbar-text navbar-right">Kirjautunut sisään tunnuksella: {{user_logged_in.username}}</p>

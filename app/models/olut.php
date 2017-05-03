@@ -1,7 +1,7 @@
 <?php
 
 class Olut extends BaseModel{
-    public $id, $nimi, $panimo, $kuvaus, $tyyppi_id;
+    public $id, $nimi, $panimo, $kuvaus, $tyyppi_id, $tyyppi;
     
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -31,7 +31,7 @@ class Olut extends BaseModel{
     }
     
     public static function all(){
-        $query = DB::connection()->prepare('SELECT * FROM Olut');
+        $query = DB::connection()->prepare('SELECT Olut.id AS id, Olut.nimi AS nimi, Olut.panimo AS panimo, Olut.kuvaus AS kuvaus, Olut.tyyppi_id AS tyyppi_id, Tyyppi.nimi AS tyyppi FROM Olut, Tyyppi WHERE Olut.tyyppi_id  = Tyyppi.id ORDER BY Olut.id');
         
         $query->execute();
         
@@ -45,7 +45,8 @@ class Olut extends BaseModel{
                 'nimi' => $row['nimi'],
                 'panimo' => $row['panimo'],
                 'kuvaus' => $row['kuvaus'],
-                'tyyppi_id' => $row['tyyppi_id']
+                'tyyppi_id' => $row['tyyppi_id'],
+                'tyyppi' => $row['tyyppi']
                     ));
         }
         
@@ -54,7 +55,7 @@ class Olut extends BaseModel{
     }
     
     public static function find($id){
-        $query = DB::connection()->prepare('SELECT * FROM Olut WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare('SELECT Olut.id AS id, Olut.nimi AS nimi, Olut.panimo AS panimo, Olut.kuvaus AS kuvaus, Olut.tyyppi_id AS tyyppi_id, Tyyppi.nimi AS tyyppi FROM Olut, Tyyppi WHERE Olut.tyyppi_id  = Tyyppi.id AND Olut.id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
         
@@ -64,6 +65,7 @@ class Olut extends BaseModel{
                 'nimi' => $row['nimi'],
                 'panimo' => $row['panimo'],
                 'kuvaus' => $row['kuvaus'],
+                'tyyppi' => $row['tyyppi'],
                 'tyyppi_id' => $row['tyyppi_id']
             ));
             
@@ -90,7 +92,7 @@ class Olut extends BaseModel{
     }
     
 //    public static function OlutTyyppi($id){
-//        $query = DB::connection()->prepare('SELECT Tyyppi.nimi AS Tyyppi_nimi );
+//        $query = DB::connection()->prepare('SELECT Tyyppi.nimi AS tyyppi FROM Olut.tyyppi_id  = Tyyppi.id');
 //        $query->execute(array('id' => $id));
 //        $row = $query->fetch();
 //        
@@ -102,7 +104,8 @@ class Olut extends BaseModel{
 //                'nimi' => $row['nimi'],
 //                'panimo' => $row['panimo'],
 //                'kuvaus' => $row['kuvaus'],
-//                'tyyppi_id' => $row['tyyppi_id']
+//                'tyyppi_id' => $row['tyyppi_id'],
+//                'tyyppi' => $row['tyyppi']
 //                    ));
 //        }
 //    }

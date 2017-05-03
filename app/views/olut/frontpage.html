@@ -19,7 +19,6 @@
         <th>Panimo</th>
         <th>Tyyppi</th>
         <th>Kuvaus</th>
-        <th></th>
       </tr>
     </thead>
 
@@ -29,9 +28,9 @@
       <tr>
           <td><a href="{{base_path}}/olut/{{olut.id}}">{{olut.nimi}}</td>
         <td>{{olut.panimo}}</td>
-        <td>{{olut.tyyppi_id}}</td>
+        <td>{{olut.tyyppi}}</td>
         <td>{{olut.kuvaus}}</td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/olut/{{olut.id}}/edit">Muokkaa</a></th>
+        
       </tr>
       {% endfor %}
     </tbody>

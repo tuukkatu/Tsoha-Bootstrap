@@ -18,6 +18,10 @@ class BeerController extends BaseController {
         View::make('olut/esittely.html');
     }
     
+    public static function listaussivu() {
+        self::check_logged_in();
+        View::make('olut/listaussivu.html');
+    }
 
     public static function store() {
         self::check_logged_in();
@@ -25,6 +29,7 @@ class BeerController extends BaseController {
         $attributes = array(
             'nimi' => $params['nimi'],
             'panimo' => $params['panimo'],
+            'kuvaus' => $params['kuvaus'],
             'tyyppi_id' => $params['tyyppi']
         );
         //Kint::dump($params);
@@ -38,7 +43,8 @@ class BeerController extends BaseController {
             Redirect::to('/olut' , array('message' => 'Olut on lisätty kirjastoosi!'));
         } else {
             // Pelissä oli jotain vikaa :(
-            View::make('olut/new.html', array('errors' => $errors, 'attributes' => $attributes));
+            $tyyppi = Tyyppi::all();
+            View::make('olut/new.html', array('errors' => $errors, 'attributes' => $attributes, 'tyypit' => $tyyppi));
         }
 
         //$olut->save();
@@ -54,13 +60,16 @@ class BeerController extends BaseController {
     
     public static function show($id){
         $olut = Olut::find($id);
+        
         View::make('olut/esittely.html', array('olut' => $olut));
     }
     
     public static function edit($id){
         self::check_logged_in();
         $olut = Olut::find($id);
-        View::make('olut/edit.html', array('olut' => $olut));
+        $tyypit = Tyyppi::all();
+        //Kint::dump($olut);
+        View::make('olut/edit.html', array('olut' => $olut, 'tyypit' => $tyypit));
     }
     
     public static function update($id){
@@ -70,8 +79,9 @@ class BeerController extends BaseController {
         $attributes = array(
             'id' => $id,
             'nimi' => $params['nimi'],
-            'panimo' => $params['panimo']
-            //'tyyppi_id' => $params['tyyppi_id']
+            'panimo' => $params['panimo'],
+            'kuvaus' => $params['kuvaus'],
+            'tyyppi_id' => $params['tyyppi_id']
         );
         
         $olut = new Olut($attributes);

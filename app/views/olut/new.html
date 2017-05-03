@@ -1,39 +1,44 @@
 
 {% extends "base.html" %}
 {% block content %}
-  <h1>Lisää olut kirjastoon</h1>
-  
-  {% if errors %}
-  <div class="alert alert-danger">
-      <ul>
-          {% for error in errors %}
-          <li>{{error}}</li>
-          {% endfor %}
-      </ul>
-  </div>
-  {% endif %}
-  <form method="post" action="{{base_path}}/olut">
+<h1>Lisää olut kirjastoon</h1>
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<form method="post" action="{{base_path}}/olut">
     <div class="form-group">
-      <label>Nimi</label>
-      <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
+        <label>Nimi</label>
+        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>
 
     <div class="form-group">
-      <label>Panimo</label>
-      <input type="text" name="panimo" class="form-control" value="{{attributes.panimo}}">
+        <label>Panimo</label>
+        <input type="text" name="panimo" class="form-control" value="{{attributes.panimo}}">
     </div>
-     
-      <div class="form-group">
-          <label>Tyyppi</label>
-          <select class="form-control" name="tyyppi">
-              {% for tyyppi in tyypit %}
-              <option value="{{tyyppi.id}}">{{tyyppi.nimi}}</option>
-              {% endfor %}
-          </select>
-      </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+        <label>Kuvaus</label>
+        <input type="text" name="kuvaus" class="form-control" value="{{attributes.kuvaus}}">
     </div>
-  </form>
+
+    <div class="form-group">
+        <label>Tyyppi</label>
+        <select class="form-control" name="tyyppi">
+            {% for tyyppi in tyypit %}
+            <option value="{{tyyppi.id}}">{{tyyppi.nimi}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+</form>
 {% endblock %}
