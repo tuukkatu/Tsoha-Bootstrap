@@ -1,7 +1,7 @@
 <?php
 
 class Arvostelu extends BaseModel{
-    public $id, $arvosana, $arvostelupaiva, $olut_id, $arvostelija_id, $nimi;
+    public $id, $arvosana, $arvostelupaiva, $olut_id, $arvostelija_id, $nimi, $panimo, $username;
     
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -13,14 +13,14 @@ class Arvostelu extends BaseModel{
         if($this->arvosana == '' || $this->arvosana == null){
             $errors[] = 'Arvosana ei saa olla tyhjä!';
         }
-        if(($this->arvosana) < 1 || ($this->nimi) > 100) {
+        if(($this->arvosana) < 1 || ($this->arvosana) > 100) {
             $errors[] = 'Arvosanan tulee olla numero välillä 1-100!';
         }
         return $errors;
     }
     
     public static function all(){
-        $query = DB::connection()->prepare('SELECT Arvostelu.id AS id, arvosana, arvostelupaiva, olut_id, arvostelija_id, Olut.nimi FROM Arvostelu, Olut WHERE Arvostelu.olut_id = Olut.id');
+        $query = DB::connection()->prepare('SELECT Arvostelu.id AS id, arvosana, arvostelupaiva, olut_id, arvostelija_id, Olut.nimi, Olut.panimo, Arvostelija.username FROM Arvostelu, Olut, Arvostelija WHERE Arvostelu.olut_id = Olut.id AND Arvostelija.id = Arvostelu.arvostelija_id');
         
         $query->execute();
         
@@ -35,7 +35,9 @@ class Arvostelu extends BaseModel{
                 'arvostelupaiva' => $row['arvostelupaiva'],
                 'olut_id' => $row['olut_id'],
                 'arvostelija_id' => $row['arvostelija_id'],
-                'nimi' => $row['nimi']
+                'nimi' => $row['nimi'],
+                'panimo' => $row['panimo'],
+                'username' => $row['username']
                     ));
         }
         
@@ -83,8 +85,8 @@ class Arvostelu extends BaseModel{
     }
     
     public function save(){
-        $query = DB::connection()->prepare('INSERT INTO Arvostelu (arvosana, arvostelupaiva, olut_id, arvostelija_id) VALUES (:arvosana, :arvostelupaiva, :olut_id, :arvostelija_id) RETURNING id');
-        $query->execute(array('arvosana' => $this->arvosana, 'arvostelupaiva' => $this->arvostelupaiva, 'olut_id' => $this->olut_id, 'arvostelija_id' => $this->arvostelija_id));
+        $query = DB::connection()->prepare('INSERT INTO Arvostelu (arvosana, arvostelupaiva, olut_id, arvostelija_id) VALUES (:arvosana, NOW(), :olut_id, :arvostelija_id) RETURNING id');
+        $query->execute(array('arvosana' => $this->arvosana, 'olut_id' => $this->olut_id, 'arvostelija_id' => $this->arvostelija_id));
         $row = $query->fetch();
         $this->id = $row['id'];
     }

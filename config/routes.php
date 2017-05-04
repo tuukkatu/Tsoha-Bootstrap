@@ -88,3 +88,11 @@ $routes->post('/arvostelut/', function(){
 $routes->get('/arvostelut', function() {
     ArvosteluController::index();
 });
+
+$routes->get('/register', function(){
+    UserController::register();
+});
+
+$routes->post('/register', function(){
+    UserController::handle_register();
+});

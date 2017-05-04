@@ -21,6 +21,6 @@ CREATE TABLE Arvostelu(
 id SERIAL PRIMARY KEY,
 arvosana INT NOT NULL,
 arvostelupaiva DATE,
-olut_id INT REFERENCES Olut(id),
+olut_id INT REFERENCES Olut(id) ON DELETE CASCADE,
 arvostelija_id INT REFERENCES Arvostelija(id)
 );

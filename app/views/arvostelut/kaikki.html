@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Käyttäjän {{user_logged_in.username}} olutarvostelut</h1>
+  <h1>Käyttäjien olutarvostelut</h1>
 
   <p>
     <a href="{{base_path}}/arvostelut/uusi" class="btn btn-success">Lisää arvostelu</a>
@@ -13,7 +13,7 @@
         <th>Arvostelupäivä</th>
         <th>Arvosana(0-100)</th>
         <th>Panimo</th>
-        <th></th>
+        <th>Arvostelija</th>
       </tr>
     </thead>
 
@@ -24,8 +24,9 @@
           <td><a href="{{base_path}}/olut/{{arvostelu.olut_id}}">{{arvostelu.nimi}}</td>
         <td>{{arvostelu.arvostelupaiva}}</td>
         <td>{{arvostelu.arvosana}}</td>
-        <td>Sinebrychoff</td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/{{arvostelu.id}}/edit">Muokkaa</a></th>
+        <td>{{arvostelu.panimo}}</td>
+        <td>{{arvostelu.username}}</td>
+<!--        <th><a class="btn btn-default btn-sm" href="{{base_path}}/{{arvostelu.id}}/edit">Muokkaa</a></th>-->
       </tr>
       {% endfor %}
     </tbody>

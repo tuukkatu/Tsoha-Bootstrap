@@ -4,6 +4,7 @@ Class ArvosteluController extends BaseController {
 
 
     public static function create() {
+        self::check_logged_in();
         $oluet = Olut::all();
         View::make('arvostelut/uusiArvostelu.html', array('oluet' => $oluet));
     }
@@ -14,6 +15,7 @@ Class ArvosteluController extends BaseController {
     }
     
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $arvostelija = self::get_user_logged_in();
         $attributes = array(
@@ -40,6 +42,7 @@ Class ArvosteluController extends BaseController {
     }
 
     public static function destroy($id){
+        self::check_logged_in();
         $arvostelu = new Arvostelu(array('id' => $id));
         $arvostelu->destroy();
         Redirect::to();

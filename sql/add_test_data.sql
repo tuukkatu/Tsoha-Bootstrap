@@ -22,10 +22,14 @@ INSERT INTO Tyyppi (nimi) VALUES ('Münchener');
 INSERT INTO Tyyppi (nimi) VALUES ('Bock');
 
 INSERT INTO Arvostelija (username, password) VALUES ('kissa', 'kissa123');
+INSERT INTO Arvostelija (username, password) VALUES ('koira', 'koira123');
+INSERT INTO Arvostelija (username, password) VALUES ('hiiri', 'hiiri123');
 
 INSERT INTO Olut (nimi, panimo, kuvaus, tyyppi_id) VALUES ('Koff', 'Sinebrychoff', 'raikas', '1');
 INSERT INTO Olut (nimi, panimo, kuvaus, tyyppi_id) VALUES ('BrewDog Nanny State', 'BrewDog', 'hedelmäinen', '7');
+INSERT INTO Olut (nimi, panimo, kuvaus, tyyppi_id) VALUES ('Brooklyn Lager', 'Brooklyn Brewery', 'täyteläinen', '1');
 
 INSERT INTO Arvostelu (arvosana, arvostelupaiva, olut_id, arvostelija_id) VALUES ('71', NOW(), '1', '1');
 INSERT INTO Arvostelu (arvosana, arvostelupaiva, olut_id, arvostelija_id) VALUES ('72', NOW(), '1', '1');
-
+INSERT INTO Arvostelu (arvosana, arvostelupaiva, olut_id, arvostelija_id) VALUES ('73', NOW(), '2', '2');
+INSERT INTO Arvostelu (arvosana, arvostelupaiva, olut_id, arvostelija_id) VALUES ('74', NOW(), '2', '3');
