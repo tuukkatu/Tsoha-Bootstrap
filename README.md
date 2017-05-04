@@ -10,6 +10,7 @@ Yleisiä linkkejä:
 * [Loginsivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/login)
 Käyttäjätunnus: kissa  Salasana: kissa123
 * [Etusivu](http://tuukkatu.users.cs.helsinki.fi/tietokantasovellus/olut/etusivu)
+* [Create table lauseet](https://github.com/tuukkatu/Tsoha-Bootstrap/blob/master/sql/create_tables.sql)
 
 ## Työn aihe
 
